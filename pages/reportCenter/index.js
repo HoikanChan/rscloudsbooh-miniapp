@@ -15,35 +15,31 @@ Page({
     industryKey: null,
     industries: [
       {
-        val: 'tdly',
-        name: '土地利用'
-      },
-      {
-        val: 'ly',
+        val: '8ac169e6-4a3e-4291-af1c-e913ed89b6a5',
         name: '林业'
       },
       {
-        val: 'ny',
+        val: '8df6dada-b3fa-46af-ba22-4a3472a95745',
         name: '农业'
       },
       {
-        val: 'gt',
+        val: '59665c22-5faa-48a4-8b6e-5e4bd0a1d6bd',
         name: '国土'
       },
       {
-        val: 'sdfasdf',
+        val: '85a62495-f98d-4cf3-8953-3715e050f00c',
         name: '耕地'
       },
       {
-        val: 'adaf',
+        val: '03529ee9-4ad6-4958-af36-c1dc63958ce9',
         name: '城市变化'
       },
       {
-        val: 'opo',
+        val: 'ae711405-1e5f-4530-bcbd-f4d8867dc711',
         name: '地表温度'
       },
       {
-        val: 'were',
+        val: '35826340-b670-4349-a0e7-04af293dc56e',
         name: '植被分布'
       }
     ],
