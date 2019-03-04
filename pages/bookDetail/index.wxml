@@ -1,0 +1,12 @@
+<!-- pages/bookDetail/index.wxml -->
+<view class='container'>
+  <view class="book-info">
+    <image class="cover" src="{{img}}" mode="aspectFit" background-size="cover"></image>
+    <text class='title'>{{title}}</text>
+    <text class='time'>{{time}}</text>
+  </view>
+  <view class='btn-row'>
+    <button class="btn-left" bindtap="viewBook">开始阅读</button>
+    <button class="btn-right" bindtap="downloadBook">下载</button>
+  </view>
+</view>

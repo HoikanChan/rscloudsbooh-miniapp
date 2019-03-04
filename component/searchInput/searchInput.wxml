@@ -1,0 +1,6 @@
+<!-- Progressbar.wxml -->
+<view class="wrapper">
+  <View class='search-view '>
+    <input placeholder="请输入关键词进行搜索"/>
+  </View>
+</view>

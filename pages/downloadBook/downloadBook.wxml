@@ -1,0 +1,2 @@
+<!--pages/downloadBook.wxml-->
+<web-view src="{{url}}"></web-view>

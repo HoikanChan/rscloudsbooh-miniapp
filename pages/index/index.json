@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-progress": "../../iview/progress/index",
+    "i-spin": "../../iview/spin/index",
+    "search-input": "../../component/searchInput/searchInput"
+  }
+}

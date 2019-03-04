@@ -1,0 +1,73 @@
+<!--index.wxml-->
+  <search-input></search-input>
+ <swiper class="carousel-swpier" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{banner}}" wx:key="id">
+      <image class="carousel" src="{{item}}" mode="scaleToFill" ></image>
+    </swiper-item>
+  </swiper>
+<view class="wrapper">
+  <view style='width:100%;'>
+      <i-progress title="热门云报" total="{{hotTotal}}" now="{{hotCurrent}}"></i-progress>
+      <swiper 
+        current="{{hotCurrent}}" 
+        class='booklist' 
+        display-multiple-items="1" 
+        next-margin="140rpx" 
+        data-key="hot"
+        bindchange="swiperChange"
+      > 
+        <swiper-item  wx:for="{{hotBooksList}}" wx:key="{{index}}" > 
+          <view class='bookItem' bindtap='viewBook' data-bookid="{{item.id}}" data-img="{{item.img_url}}" data-title="{{item.title}}" data-time="{{item.time}}">
+            <image class="cover" src="{{item.img_url}}" mode="aspectFit" background-size="cover"></image>
+            <text class='title'>{{item.title}}</text>
+            <text class='time'>{{item.time}}</text>
+           
+          </view>
+        </swiper-item>
+      </swiper>
+  </view>
+  <view>
+       <i-progress title="最新云报" total="{{newTotal}}" now="{{newCurrent}}"></i-progress>
+      <swiper 
+        current="{{newCurrent}}" 
+        class='booklist' 
+        display-multiple-items="1" 
+        next-margin="140rpx" 
+        style='height：300px'
+        data-key="new"
+        bindchange="swiperChange"
+      > 
+        <swiper-item  wx:for="{{newBooksList}}" wx:key="{{index}}" > 
+          <view class='bookItem' bindtap='viewBook' data-bookid="{{item.id}}" data-img="{{item.img_url}}" data-title="{{item.title}}" data-time="{{item.time}}">
+            <image class="cover" src="{{item.img_url}}" mode="aspectFit" background-size="cover"></image>
+            <text class='title'>{{item.title}}</text>
+            <text class='time'>{{item.time}}</text>
+           
+          </view>
+        </swiper-item>
+      </swiper>
+  </view>
+   <view>
+       <i-progress title="最新云报" total="{{areaTotal}}" now="{{areaCurrent}}"></i-progress>
+      <swiper 
+        current="{{areaCurrent}}" 
+        class='booklist' 
+        display-multiple-items="1" 
+        next-margin="140rpx" 
+        style='height：300px'
+        data-key="area"
+        bindchange="swiperChange"
+      > 
+        <swiper-item  wx:for="{{areaBooksList}}" wx:key="{{index}}" > 
+          <view class='bookItem' bindtap='viewBook' data-bookid="{{item.id}}" data-img="{{item.img_url}}" data-title="{{item.title}}" data-time="{{item.time}}">
+            <image class="cover" src="{{item.img_url}}" mode="aspectFit" background-size="cover"></image>
+            <text class='title'>{{item.title}}</text>
+            <text class='time'>{{item.time}}</text>
+           
+          </view>
+        </swiper-item>
+      </swiper>
+  </view>
+  
+ <i-spin size="large" wx:if="{{loading}}" fix></i-spin>
+</view>

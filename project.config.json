@@ -1,0 +1,80 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.5.0",
+	"appid": "wx4e8d91fcb5bddc14",
+	"projectname": "yunbao",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "cu",
+					"pathName": "pages/customizeReport/customizeReport",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "re",
+					"pathName": "pages/reportCenter/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "cs",
+					"pathName": "pages/customService/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "bd",
+					"pathName": "pages/bookDetail/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/index"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,52 @@
+/* pages/login/index.wxss */
+.title-img {
+  width: 10rem;
+  margin-bottom: 3rem;
+}
+.line {
+  width: 80%;
+  display: flex;
+  padding: 24rpx 0;
+  border-bottom: 1px solid #ccc;
+}
+.line text {
+  color: #333;
+}
+.line input {
+  color: #333;
+  font-size: 0.8em;
+  margin-left: 32rpx;
+  flex: 1;
+}
+.forget-psw {
+  margin-top: 12rpx;
+  width: 90%;
+  text-align: right;
+}
+.forget-psw view {
+  color: #333;
+  font-size: .8em
+}
+.btn-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+button {
+  width: 80%;
+  background: #e14052;
+  border: none;
+  color: #fff;
+  line-height: 82rpx;
+  height: 82rpx;
+  padding: 4rpx 82rpx;
+}
+.register-row{
+  margin-top: 24rpx;
+  font-size: 0.8em;
+  display: flex;
+  color:#333;
+}
+.register-row navigator {
+  color: #e14052;
+}

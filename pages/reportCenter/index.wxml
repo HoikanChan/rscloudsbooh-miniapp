@@ -1,0 +1,47 @@
+<!-- pages/reportCenter/index.wxml -->
+<search-input></search-input>
+<view class="wrapper">
+  <view class="searchbar">
+    <view class="searchbar-sub">
+      <picker mode="multiSelector" range="{{areaArray}}" bindcolumnchange="bindAreaColumnChange" range-key="name" value="{{areaIndex}}" bindchange="bindAreaChange">
+        <view class="picker">
+          <text class="area-text black-text" wx:if="{{areaArray[0][areaIndex[0]].name && areaArray[1][areaIndex[1]].name && areaArray[2][areaIndex[2]].name}}">
+            区域 : {{areaArray[0][areaIndex[0]].name}}{{areaArray[1][areaIndex[1]].name}}{{areaArray[2][areaIndex[2]].name}}
+          </text>
+          <text class="area-text" wx:else>区域</text>
+        </view>
+      </picker>
+    </view>
+    <view class="line"></view>
+    <view class="searchbar-sub">
+      <picker bindchange="bindPickerChange" value="{{industryKey}}" range="{{industries}}" range-key="name" data-valType="industry">
+        <view class="picker">
+          <input value="{{ industries[industryKey].name }}" title="行业" placeholder="行业" />
+        </view>
+      </picker>
+      <picker bindchange="bindPickerChange" value="{{infoHzCodeKey}}" range="{{infoHzCodes}}" range-key="name" data-valType="infoHzCode">
+        <view class="picker">
+          <input value="{{ infoHzCodes[infoHzCodeKey].name }}" title="频率" placeholder="频率" />
+        </view>
+      </picker>
+      <picker bindchange="bindPickerChange" value="{{downloadStandardKey}}" range="{{downloadStandards}}" range-key="name" data-valType="downloadStandard">
+        <view class="picker">
+          <input value="{{ downloadStandards[downloadStandardKey].name }}" title="计费" placeholder="计费" />
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="no-result" wx:if="{{!bookList.length}}">
+    <image src="../../static/imgs/no-search-result.png" mode="aspectFit" background-size="cover"></image>
+    <text class="area-text">暂时没有满足您需求的报告，您可以</text>
+    <button>定制报告</button>
+  </view>
+  <view class="bookList">
+    <view wx:for="{{bookList}}" wx:key="{{index}}" class='bookItem' bindtap='viewBook' data-bookid="{{item.id}}" data-img="{{item.img_url}}" data-title="{{item.title}}" data-time="{{item.time}}">
+      <image class="cover" src="{{item.img_url}}" mode="aspectFit" background-size="cover"></image>
+      <text class='title'>{{item.title}}</text>
+      <text class='time'>{{item.time}}</text>
+    </view>
+  </view>
+  <i-spin wx:if="{{loading}}" fix></i-spin>
+</view>

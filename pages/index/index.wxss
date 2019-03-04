@@ -1,0 +1,48 @@
+/**index.wxss**/
+.wrapper{
+  padding: 36rpx 12px;
+}
+.carousel-swpier{
+
+  height: 31vh;
+}
+.carousel{
+  width: 100%;
+}
+.booklist{
+  margin-top: 32rpx;
+  height: 520rpx;
+}
+.bookItem{
+  display: inline-block;
+  height: 640rpx;
+  margin-right: 2rem;
+
+}
+  .bookItem .cover{
+    width:520rpx;
+    height: 360rpx;
+    box-shadow: 10px 10px 20px #dcdcdc;
+    border-radius: 10px;
+  }
+  .bookItem .download-icon{
+    width:80rpx;
+    height: 80rpx;
+  }
+  .bookItem .title{
+    display: block;
+    color: #333;
+    width: 520rpx;
+    margin: 12px 0 8px;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    margin-left: 12rpx;
+  }
+  .bookItem .time{
+    margin-left: 12rpx;
+    color: #b1b1b1;
+    display: block;
+    font-size: 14px;
+  }

@@ -1,0 +1,23 @@
+/* Progressbar.wxss */
+.wrapper{
+
+  background: #f7f7f7;
+  padding: 20rpx 46rpx;
+}
+.search-view {
+  height: 68rpx;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+input{
+  width: 95%;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+
+}
+icon{
+  height: 24rpx;
+  width:  24rpx;
+}

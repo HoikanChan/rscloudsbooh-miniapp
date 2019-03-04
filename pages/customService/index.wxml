@@ -1,0 +1,9 @@
+<!--pages/login/index.wxml-->
+<view class="container">
+  <image class="icon" slot="icon" mode="widthFix" src="../../static/imgs/custom-service.png" />
+  <view>
+    <text>客服热线：400-674-7498</text>
+    <text>客服邮箱：service@rsclouds.com</text>
+    <text>销售电话：010-56104936</text>
+    </view>
+</view>

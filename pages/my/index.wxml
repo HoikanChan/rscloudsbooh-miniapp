@@ -1,0 +1,25 @@
+<!--pages/my/index.wxml-->
+<view class='wrapper'>
+  <view class='user-row' bindtap='goToLogin'>
+    <view class='avatar-view'>
+      <image class="avatar" src="../../static/imgs/my-avatar.png"></image>
+    </view>
+    <view class="userinfo-view">
+      <text wx:if="{{username}}" class="title">{{username}}</text>
+      <text wx:else class="title">登录/注册</text>
+      <text class="sub-title">登录后可享受更多权限</text>
+    </view>
+  </view>
+  <view class='menu'>
+    <i-panel class="cell-panel-demo">
+        <i-cell-group>
+            <i-cell title="帮助中心" is-link url="/pages/login/index">
+              <image class="icon" slot="icon" mode="widthFix" src="../../static/imgs/my-help.png" />
+            </i-cell>
+            <i-cell title="联系客服" is-link url="/pages/customService/index">
+              <image class="icon" slot="icon" mode="widthFix" src="../../static/imgs/my-contact.png" />
+            </i-cell>
+        </i-cell-group>
+    </i-panel>
+  </view>
+</view>

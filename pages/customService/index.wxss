@@ -1,0 +1,12 @@
+/* pages/login/index.wxss */
+.icon{
+  width: 6rem;
+  margin-bottom: 3rem;
+}
+text{
+  display: block;
+  margin-left: 32rpx;
+  margin-bottom: 16rpx;
+  color: #333;
+  text-align: start;
+}

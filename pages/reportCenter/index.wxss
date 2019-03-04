@@ -1,0 +1,82 @@
+.wrapper{
+  min-height: 100vh;
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+}
+.area-text{
+  font-size: 28rpx;
+  color: #999;
+  margin-left: 24rpx;
+  margin-bottom: 16rpx;
+  display: block;
+}
+.searchbar{
+  background: #fff;
+  padding:12rpx 0;
+  justify-content: space-around;
+}
+.searchbar-sub{
+  display: flex;
+}
+
+.black-text{
+  color: #000;
+}
+.no-result{
+  flex: 1;
+
+  display: flex;
+  padding-top: 94rpx; 
+  align-items: center;
+  flex-direction: column;
+}
+  .no-result image{
+    height: 360rpx;
+    margin-bottom: 24rpx;
+  }
+  .no-result button{
+    margin-top: 16rpx;
+    background: #e14052;
+    border: none;
+    color: #fff;
+    line-height:82rpx; 
+    height: 82rpx;
+    padding:4rpx 82rpx;
+  }
+
+  /* bookitem */
+  .bookList{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2%;
+  }
+    .bookItem{
+      width: 46%;
+      position: relative;
+      padding: 2%;
+    }
+  .bookItem .cover{
+    /* width:520rpx; */
+    width: 100%;
+    height: 240rpx;
+    box-shadow: 10px 10px 20px #dcdcdc;
+    border-radius: 10px;
+  } 
+  .bookItem .title{
+    display: block;
+    color: #333;
+    margin: 8rpx 0 ;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    margin-left: 12rpx;
+  }
+  .bookItem .time{
+    margin-left: 12rpx;
+    color: #b1b1b1;
+    display: block;
+    font-size: 14px;
+  }
+  /* bookitem */

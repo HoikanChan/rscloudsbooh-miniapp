@@ -1,0 +1,14 @@
+<view class="i-class i-progress i-progress-{{ status }} {{ !hideInfo ? 'i-progress-show-info' : '' }}">
+    <view class='title-line'>
+      <text class='title'>{{title}}</text>
+      <view>
+        <text class='small-title'>{{ now +1 }}</text>
+        <text class='shadow-text'> / {{total}}</text>
+      </view>
+    </view>
+    <view class="i-progress-outer">
+        <view class="i-progress-inner">
+            <view class="i-progress-bg" style="width: {{(now+1) /total *100}}%;height: {{strokeWidth}}px"></view>
+        </view>
+    </view>
+</view>

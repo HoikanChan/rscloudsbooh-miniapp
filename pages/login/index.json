@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-spin": "../../iview/spin/index"
+
+  }
+}

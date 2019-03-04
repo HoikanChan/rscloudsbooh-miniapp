@@ -1,0 +1,23 @@
+<!-- pages/login/index.wxml -->
+<view class="container">
+  <image class="title-img" mode="widthFix" src="../../static/imgs/login-title.png"></image>
+  <view class="line">
+    <text>帐号:</text>
+    <input type="text" bindinput="bindKeyInput" data-key="contact" placeholder="请输入用户名/手机号/遥感集市账号" />
+  </view>
+  <view class="line">
+    <text>密码:</text>
+    <input type="password" bindinput="bindKeyInput" data-key="password" placeholder="请输入密码" />
+  </view>
+  <view class="forget-psw">
+    <view bindtap="foregePsw">忘记密码？</view>
+  </view>
+  <view class="btn-row">
+    <button style="margin:48px 0 0" bindtap="formSubmit" type="success">提交需求</button>
+  </view>
+  <view class="register-row">
+    <text>没有帐号？</text>
+    <navigator >立即注册</navigator>
+  </view>
+  <i-spin wx:if="{{loading}}" fix></i-spin>
+</view>

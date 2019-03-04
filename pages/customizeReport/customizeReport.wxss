@@ -1,0 +1,39 @@
+/* pages/customizeReport/customizeReport.wxss */
+page{
+  height: 100vh;
+  background: #f7f7f7;
+}
+.btn-row{
+  display: flex;
+  justify-content: center;
+}
+.bg{
+  position: relative;
+}
+ .bg image{
+     width: 100%;
+   }
+ .bg text{
+   position: absolute;
+   color: #fff;
+   font-size: 62rpx;
+   font-weight: bold;
+ }
+ .text1{
+  top: 92rpx;
+  right: 152rpx;
+ }
+ .text2{
+  top: 162rpx;
+  right: 62rpx;
+ }
+button{
+  margin: 16rpx 32rpx;
+  width: 90%;
+  background: #e14052;
+  border: none;
+  color: #fff;
+  line-height:82rpx; 
+  height: 82rpx;
+  padding:4rpx 82rpx;
+}

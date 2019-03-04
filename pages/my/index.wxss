@@ -1,0 +1,36 @@
+/* pages/my/index.wxss */
+.user-row{
+  display: flex;
+  margin:40px 0; 
+} 
+  .userinfo-view{
+    flex: 3;
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+  .title{
+    display: block;
+    color: #333;
+    margin-bottom: 12rpx;
+  }
+  .sub-title{
+    font-size: 28rpx;
+    display: block;
+    color: #aaa
+  }
+  .avatar-view{
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+  }
+.avatar{
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+.icon{
+  width: 64rpx;
+  height: 64rpx;
+}

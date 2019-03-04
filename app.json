@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/webview/index",
+    "pages/downloadBook/downloadBook",
+    "pages/customizeReport/customizeReport",
+    "pages/reportCenter/index",
+    "pages/bookDetail/index",
+    "pages/my/index",
+    "pages/login/index",
+    "pages/customService/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "遥感云报",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fafafa",
+    "borderStyle": "#999",
+    "selectedColor": "#e14052",
+    "color": "#666",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/imgs/tab-index.png",
+        "selectedIconPath": "static/imgs/tab-index-hl.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/reportCenter/index",
+        "iconPath": "static/imgs/tab-report.png",
+        "selectedIconPath": "static/imgs/tab-report-hl.png",
+        "text": "报告中心"
+      },
+      {
+        "pagePath": "pages/customizeReport/customizeReport",
+        "iconPath": "static/imgs/tab-custom.png",
+        "selectedIconPath": "static/imgs/tab-custom-hl.png",
+        "text": "定制报告"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "static/imgs/tab-my.png",
+        "selectedIconPath": "static/imgs/tab-my-hl.png",
+        "text": "我的"
+      }
+    ]
+  }
+}
