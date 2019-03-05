@@ -1,3 +1,9 @@
+@import "../../static/font/iconfont.wxss";
+@import "../../static/css/searchInput.wxss";
+
+.iconfont{
+ font-size: 14px;
+}
 .wrapper{
   min-height: 100vh;
   background: #f3f3f3;
@@ -13,11 +19,15 @@
 }
 .searchbar{
   background: #fff;
-  padding:12rpx 0;
+  padding-bottom:12rpx;
   justify-content: space-around;
 }
 .searchbar-sub{
   display: flex;
+}
+.searchbar-sub picker{
+  position: relative;
+  flex: 1;
 }
 
 .black-text{

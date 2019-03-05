@@ -1,23 +1,22 @@
 /* Progressbar.wxss */
-.wrapper{
+@import "../font/iconfont.wxss";
+
+.input-wrapper{
 
   background: #f7f7f7;
   padding: 20rpx 46rpx;
 }
-.search-view {
+.input-wrapper .search-view {
   height: 68rpx;
+  padding-left: 24rpx; 
   background: #fff;
   border-radius: 10px;
   display: flex;
   align-items: center;
 }
-input{
+.input-wrapper input{
   width: 95%;
   padding: 0 24rpx;
   font-size: 28rpx;
 
-}
-icon{
-  height: 24rpx;
-  width:  24rpx;
 }

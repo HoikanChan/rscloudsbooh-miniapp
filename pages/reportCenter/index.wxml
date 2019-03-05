@@ -1,32 +1,52 @@
 <!-- pages/reportCenter/index.wxml -->
-<search-input></search-input>
+<view class="input-wrapper">
+  <View class='search-view '>
+    <text class="iconfont iconsearch"></text><input value="{{keyword}}" bindinput="inputChange" placeholder="请输入关键词进行搜索"/>
+  </View>
+</view>
 <view class="wrapper">
   <view class="searchbar">
     <view class="searchbar-sub">
-      <picker mode="multiSelector" range="{{areaArray}}" bindcolumnchange="bindAreaColumnChange" range-key="name" value="{{areaIndex}}" bindchange="bindAreaChange">
+      <picker range="{{areaArray[0]}}" range-key="name" value="{{areaIndex[0]}}" bindchange="bindProviceChange">
         <view class="picker">
-          <text class="area-text black-text" wx:if="{{areaArray[0][areaIndex[0]].name && areaArray[1][areaIndex[1]].name && areaArray[2][areaIndex[2]].name}}">
-            区域 : {{areaArray[0][areaIndex[0]].name}}{{areaArray[1][areaIndex[1]].name}}{{areaArray[2][areaIndex[2]].name}}
+          <text wx:if="{{!areaIndex[0]}}" class="area-text" >
+            区域 <text class="iconfont iconxiangxiajiantou"></text>
           </text>
-          <text class="area-text" wx:else>区域</text>
+          <text wx:else class="area-text" >
+            {{areaArray[0][areaIndex[0]].name}} <text class="iconfont iconxiangxiajiantou"></text>
+          </text>
         </view>
       </picker>
+      <picker wx:if="{{areaIndex[0] && areaArray[0][areaIndex[0]].adminId}}" range="{{areaArray[1]}}" range-key="name" value="{{areaIndex[1]}}" bindchange="bindCityChange">
+        <view class="picker">
+          <text wx:if="{{!areaIndex[1]}}" class="area-text" >
+            城市 <text class="iconfont iconxiangxiajiantou"></text>
+          </text>
+          <text wx:else class="area-text" >
+            {{areaArray[1][areaIndex[1]].name}} <text class="iconfont iconxiangxiajiantou"></text>
+          </text>
+        </view>
+      </picker>
+      <view  wx:if="{{areaIndex[0]}}"></view>
     </view>
     <view class="line"></view>
     <view class="searchbar-sub">
       <picker bindchange="bindPickerChange" value="{{industryKey}}" range="{{industries}}" range-key="name" data-valType="industry">
         <view class="picker">
-          <input value="{{ industries[industryKey].name }}" title="行业" placeholder="行业" />
+          <text  wx:if="{{!industryKey}}" class="area-text" title="行业" placeholder="行业">行业 <text class="iconfont iconxiangxiajiantou"></text></text>
+          <text  wx:else class="area-text" title="行业" placeholder="行业">{{ industries[industryKey].name }}<text class="iconfont iconxiangxiajiantou"></text></text>
         </view>
       </picker>
       <picker bindchange="bindPickerChange" value="{{infoHzCodeKey}}" range="{{infoHzCodes}}" range-key="name" data-valType="infoHzCode">
         <view class="picker">
-          <input value="{{ infoHzCodes[infoHzCodeKey].name }}" title="频率" placeholder="频率" />
+          <text wx:if="{{!infoHzCodeKey}}" class="area-text" title="频率" placeholder="频率">频率 <text class="iconfont iconxiangxiajiantou"></text></text>
+          <text wx:else class="area-text" title="频率" placeholder="频率"> {{ infoHzCodes[infoHzCodeKey].name }}<text class="iconfont iconxiangxiajiantou"></text></text>
         </view>
       </picker>
       <picker bindchange="bindPickerChange" value="{{downloadStandardKey}}" range="{{downloadStandards}}" range-key="name" data-valType="downloadStandard">
         <view class="picker">
-          <input value="{{ downloadStandards[downloadStandardKey].name }}" title="计费" placeholder="计费" />
+          <text wx:if="{{!downloadStandardKey}}" class="area-text" title="计费" placeholder="计费" >计费 <text class="iconfont iconxiangxiajiantou"></text></text>
+          <text wx:else class="area-text" title="计费" placeholder="计费" >{{ downloadStandards[downloadStandardKey].name }}<text class="iconfont iconxiangxiajiantou"></text></text>
         </view>
       </picker>
     </view>

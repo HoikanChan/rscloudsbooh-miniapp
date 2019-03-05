@@ -2,9 +2,8 @@
 //获取应用实例
 const app = getApp();
 const request = require('../../utils/request.js');
-const { formatTime } = require('../../utils/util.js');
+const { formatTime, debounce } = require('../../utils/util.js');
 const { IMG_URL, CAROUSEL_URL } = require('../../config.js');
-
 Page({
   data: {
     loading: false,
@@ -86,5 +85,15 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     });
-  }
+  },
+  // 搜索云报
+  inputChange: debounce(function(e) {
+    const val = e.detail.value;
+    if(val){
+      app.globalData.keyword = val
+      wx.switchTab({
+        url: '/pages/reportCenter/index'
+      });
+    }
+  }, 500)
 });

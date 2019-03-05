@@ -7,5 +7,6 @@ module.exports = {
       : request('area/getAreaList'),
   getUserInfo: () => request('user/getUserInfo'),
   getReports: () => request('reportgetContent'),
-  queryReports: params => request('reportgetContent', params)
+  queryReports: (industry, params) =>
+    request('reportgetContent/' + industry, params)
 };

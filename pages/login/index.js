@@ -18,7 +18,7 @@ Page({
   },
   foregePsw: function() {
     wx.navigateTo({
-      url: createWebUrl('/pages/webview/index', FORGET_PSW_URL)
+      url: '/pages/foregetPsw/index'
     });
   },
   formSubmit: function() {
@@ -28,31 +28,30 @@ Page({
       this.setData({
         loading: true
       });
-      request(
-        'booksUserLogin',
-        {
-          contact: this.data.form.contact,
-          password: hex_md5(this.data.form.password),
-          remberMe: false
-        }
-      ).then(res => {
-        this.setData({
-          loading: false
-        });
-        if(res.code !== '1001'){
+      request('booksUserLogin', {
+        contact: this.data.form.contact,
+        password: hex_md5(this.data.form.password),
+        remberMe: false
+      })
+        .then(res => {
+          this.setData({
+            loading: false
+          });
+          if (res.code !== '1001') {
+            wx.showToast({
+              title: res.msg,
+              icon: 'none'
+            });
+          } else {
+            wx.navigateBack();
+          }
+        })
+        .catch(res => {
           wx.showToast({
             title: res.msg,
             icon: 'none'
           });
-        }else {
-          wx.navigateBack()
-        }
-      }).catch(res =>{
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
         });
-      });
     }
   },
   validateForm: function() {
@@ -74,8 +73,8 @@ Page({
       return true;
     }
   },
-   // 频率，行业选择
-   bindKeyInput: function(e) {
+  // 频率，行业选择
+  bindKeyInput: function(e) {
     const key = e.currentTarget.dataset.key;
     this.setData({
       ['form.' + key]: e.detail.value

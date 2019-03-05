@@ -13,7 +13,7 @@
   <view class='menu'>
     <i-panel class="cell-panel-demo">
         <i-cell-group>
-            <i-cell title="帮助中心" is-link url="/pages/login/index">
+            <i-cell title="帮助中心" is-link bind:click="navigateToWeb">
               <image class="icon" slot="icon" mode="widthFix" src="../../static/imgs/my-help.png" />
             </i-cell>
             <i-cell title="联系客服" is-link url="/pages/customService/index">

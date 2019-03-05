@@ -1,4 +1,6 @@
 /**index.wxss**/
+@import "../../static/css/searchInput.wxss";
+
 .wrapper{
   padding: 36rpx 12px;
 }

@@ -4,6 +4,7 @@ const BOOK_DOWNLOAD_HOST = HOST + 'books/booksDownload';
 const IMG_URL = 'http://www.rscloudmart.com/image/';
 // 轮播图
 const CAROUSEL_URL = HOST + '/images/banner.png';
+const HELPCENTER_URL = HOST + 'help';
 // 忘记密码
 const FORGET_PSW_URL =
   'http://www.rscloudmart.com/usercenter/forgetLoginPassword.htm';
@@ -14,5 +15,6 @@ module.exports = {
   CAROUSEL_URL: CAROUSEL_URL,
   BOOK_HOST: BOOK_HOST,
   FORGET_PSW_URL: FORGET_PSW_URL,
-  BOOK_DOWNLOAD_HOST: BOOK_DOWNLOAD_HOST
+  BOOK_DOWNLOAD_HOST: BOOK_DOWNLOAD_HOST,
+  HELPCENTER_URL: HELPCENTER_URL
 };

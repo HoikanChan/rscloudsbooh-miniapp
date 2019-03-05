@@ -1,5 +1,9 @@
 <!--index.wxml-->
-  <search-input></search-input>
+<view class="input-wrapper">
+  <View class='search-view '>
+    <text class="iconfont iconsearch"></text><input bindinput="inputChange" placeholder="请输入关键词进行搜索"/>
+  </View>
+</view>
  <swiper class="carousel-swpier" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{banner}}" wx:key="id">
       <image class="carousel" src="{{item}}" mode="scaleToFill" ></image>

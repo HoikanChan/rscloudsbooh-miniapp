@@ -1,8 +1,8 @@
 // pages/reportCenter/index.js
 const api = require('../../utils/api.js');
 const { IMG_URL } = require('../../config.js');
-const { formatTime } = require('../../utils/util.js');
-
+const { formatTime, debounce } = require('../../utils/util.js');
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -10,40 +10,49 @@ Page({
   data: {
     loading: false,
     bookList: [],
-    areaIndex: [null, null, null],
+    areaIndex: ['', '', ''],
     areaArray: [],
-    industryKey: null,
+    keyword: '',
+    industryKey: '',
     industries: [
       {
-        val: '8ac169e6-4a3e-4291-af1c-e913ed89b6a5',
+        val: 'tdly',
+        name: '土地利用'
+      },
+      {
+        val: 'ly',
         name: '林业'
       },
       {
-        val: '8df6dada-b3fa-46af-ba22-4a3472a95745',
+        val: 'ny',
         name: '农业'
       },
       {
-        val: '59665c22-5faa-48a4-8b6e-5e4bd0a1d6bd',
+        val: 'gt',
         name: '国土'
       },
       {
-        val: '85a62495-f98d-4cf3-8953-3715e050f00c',
+        val: 'sdfasdf',
         name: '耕地'
       },
       {
-        val: '03529ee9-4ad6-4958-af36-c1dc63958ce9',
+        val: 'adaf',
         name: '城市变化'
       },
       {
-        val: 'ae711405-1e5f-4530-bcbd-f4d8867dc711',
+        val: 'opo',
         name: '地表温度'
       },
       {
-        val: '35826340-b670-4349-a0e7-04af293dc56e',
+        val: 'were',
         name: '植被分布'
+      },
+      {
+        val: '',
+        name: '全部'
       }
     ],
-    infoHzCodeKey: null,
+    infoHzCodeKey: '',
     infoHzCodes: [
       {
         val: 6,
@@ -72,9 +81,13 @@ Page({
       {
         val: 5,
         name: '周报'
+      },
+      {
+        val: '',
+        name: '全部'
       }
     ],
-    downloadStandardKey: null,
+    downloadStandardKey: '',
     downloadStandards: [
       {
         val: 0,
@@ -87,6 +100,10 @@ Page({
       {
         val: 2,
         name: '付费阅读'
+      },
+      {
+        val: '',
+        name: '全部'
       }
     ]
   },
@@ -96,27 +113,25 @@ Page({
     this.setData({
       [valtype + 'Key']: e.detail.value
     });
-  },
-  // 区域行改变绑定
-  bindAreaColumnChange: function(e) {
-    const { column, value } = e.detail;
-    var data = {
-      areaArray: this.data.areaArray,
-      areaIndex: this.data.areaIndex
-    };
-    data.areaIndex[column] = value;
-    const area = data.areaArray[column][value];
-    this.setData({
-      areaIndex: data.areaIndex
-    });
-    this.updateAreaList(area.adminId, column + 1);
+    this.updateBookList();
   },
   // 区域值改变绑定
-  bindAreaChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value);
+  bindProviceChange: function(e) {
+    const value = e.detail.value;
     this.setData({
-      areaIndex: e.detail.value
+      'areaIndex[0]': value,
+      'areaIndex[1]': ''
     });
+    const area = this.data.areaArray[0][value];
+    this.updateAreaList(area.adminId, 1);
+    this.updateBookList();
+  },
+  bindCityChange: function(e) {
+    const value = e.detail.value;
+    this.setData({
+      'areaIndex[1]': value
+    });
+    this.updateBookList();
   },
   // 处理api数据
   formatListData: function(list) {
@@ -131,30 +146,102 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function() {
+    console.log(app.globalData);
     this.updateAreaList('', 0);
   },
   onShow: function() {
-    console.log(this.data.booksList);
+    const { keyword } = app.globalData;
+    app.globalData.keyword = '';
+    this.setData({
+      keyword,
+      loading: true
+    });
+    if (!keyword) {
+      api.getReports().then(res => {
+        console.log(res.booksList);
+        this.setData({ bookList: this.formatListData(res.booksList) });
+        this.setData({
+          loading: false
+        });
+      });
+    } else {
+      this.updateBookList();
+    }
+  },
+  inputChange: debounce(function(e) {
+    const keyword = e.detail.value;
+    this.setData({
+      keyword
+    });
+    this.updateBookList();
+  }, 500),
+  updateBookList: function() {
     this.setData({
       loading: true
     });
-    api.getReports().then(res => {
-      console.log(res.booksList);
-      this.setData({ bookList: this.formatListData(res.booksList) });
-      this.setData({
-        loading: false
+    const {
+      areaIndex,
+      areaArray,
+      industryKey,
+      industries,
+      infoHzCodeKey,
+      infoHzCodes,
+      downloadStandardKey,
+      downloadStandards,
+      keyword
+    } = this.data;
+    const area =
+      areaIndex[1] && areaArray[1][areaIndex[1]].adminId
+        ? areaArray[1][areaIndex[1]].adminId
+        : areaIndex[0]
+        ? areaArray[0][areaIndex[0]].adminId
+        : '';
+    let industry = industries[industryKey]
+      ? industries[industryKey].val
+      : 'report';
+    api
+      .queryReports(industry, {
+        keyword,
+        area,
+        infoHzCode: infoHzCodeKey && infoHzCodes[infoHzCodeKey].val,
+        downloadStandard:
+          downloadStandardKey && downloadStandards[downloadStandardKey].val
+      })
+      .then(res => {
+        this.setData({
+          loading: false,
+          bookList: this.formatListData(res.booksList)
+        });
       });
-    });
+  },
+  // 点击查看云报
+  viewBook: function({ currentTarget }) {
+    // bookid,img,time,title
+    let url = '/pages/bookDetail/index?';
+    const data = currentTarget.dataset;
+    if (Object.keys(data).length) {
+      for (let key in data) {
+        url += `${key}=${data[key]}&`;
+      }
+      url = url.slice(0, -1);
+      wx.navigateTo({
+        url: url
+      });
+    }
   },
   // 获取区域省市县，获取上级id递归构造二维数组
   updateAreaList: function(fatherId, index) {
     let colIndex = this.data.areaIndex[index];
     colIndex === null && (colIndex = 0);
-    if (index < 3) {
+    if (index < 2) {
       api.getAreaList(fatherId).then(res => {
         const key = `areaArray[${index}]`;
         if (res.list) {
+          res.list.unshift({
+            adminId: '',
+            name: '全部'
+          });
           this.setData({
             [key]: res.list
           });

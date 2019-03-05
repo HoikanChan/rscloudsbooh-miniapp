@@ -1,44 +1,37 @@
-const { getUserInfo } = require('../../utils/api');
-const { HELPCENTER_URL } = require('../../config.js');
-const { createWebUrl } = require('../../utils/util');
-
-// pages/my/index.js
+// pages/book/book.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    username: null
+    url: ''
   },
-  goToLogin:function(){
-    wx.navigateTo({
-      url: '/pages/login/index',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function ({url}) {
+    url = url.replace(/@/g,"?")
+    url = url.replace(/%/g,"=")
+    url = url.replace(/#/g,"&")
+    this.setData({
+      url: url
+    })
   },
-  navigateToWeb: function () {
-    wx.navigateTo({
-      url: createWebUrl('/pages/webview/index', HELPCENTER_URL)
-    });
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    getUserInfo().then(res=>{
-      if(res.assertion && res.assertion.username){
-        this.setData({
-          username: res.assertion.username
-        })
-      }
-    })
+
   },
 
   /**

@@ -25,9 +25,20 @@ module.exports = {
     let newUrl = pageUrl + '?url=' + webUrl;
     let params = [];
     for (let key in param) {
-      params.push((`@${key}%${param[key]}`));
+      params.push(`@${key}%${param[key]}`);
     }
     return newUrl + params.join('#');
+  },
+  debounce: function debounce(fn, delay) {
+    let timer;
+    return function() {
+      let context = this;
+      let args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function() {
+        fn.apply(context, args);
+      }, delay);
+    };
   },
   mobileReg: /(^0{0,1}1[3|4|5|7|8][0-9]{9}$)/
 };
