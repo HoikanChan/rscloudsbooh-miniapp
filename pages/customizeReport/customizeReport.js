@@ -111,15 +111,20 @@ Page({
           infoHzCode: this.data.frequencies[this.data.frequencyKey].val,
           areaCode: this.data.areaArray[2][this.data.areaIndex[2]].adminId
         },
-        'post'
+        'POST'
       ).then(res => {
         this.setData({
           loading: false
         });
-        if(res.code === 0){
-          wx.navigateTo({
-            url: '/pages/login/index',
+        if (res.code === "1") {
+          wx.showModal({
+            title: '成功',
+            content: res.msg,
           })
+        }else{
+          wx.navigateTo({
+            url: '/pages/login/index'
+          });
         }
       });
     }
@@ -145,7 +150,10 @@ Page({
     if (!this.data.industries[this.data.industryKey]) {
       errMsg = '请选择行业';
     }
-    if (!this.data.areaArray[2] || !this.data.areaArray[2][this.data.areaIndex[2]] ) {
+    if (
+      !this.data.areaArray[2] ||
+      !this.data.areaArray[2][this.data.areaIndex[2]]
+    ) {
       errMsg = '请选择区域';
     }
     if (errMsg) {

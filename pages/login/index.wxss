@@ -47,6 +47,6 @@ button {
   display: flex;
   color:#333;
 }
-.register-row navigator {
+.register-row view {
   color: #e14052;
 }

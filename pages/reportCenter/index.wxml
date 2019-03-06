@@ -61,6 +61,8 @@
       <image class="cover" src="{{item.img_url}}" mode="aspectFit" background-size="cover"></image>
       <text class='title'>{{item.title}}</text>
       <text class='time'>{{item.time}}</text>
+          <text class="fee-icon" wx:if="{{item.readIsFree}}">免费</text>
+            <text class="fee-icon" wx:if="{{item.downloadIsFree}}">付费</text>
     </view>
   </view>
   <i-spin wx:if="{{loading}}" fix></i-spin>

@@ -12,17 +12,17 @@
       value="{{areaIndex}}"   bindchange="bindAreaChange"
     >
       <view class="picker">
-        <i-input value="{{areaArray[0][areaIndex[0]].name}}{{areaArray[1][areaIndex[1]].name}}{{areaArray[2][areaIndex[2]].name}}" title="区域"  placeholder="请选择" />
+        <i-input disabled value="{{areaArray[0][areaIndex[0]].name}}{{areaArray[1][areaIndex[1]].name}}{{areaArray[2][areaIndex[2]].name}}" title="区域"  placeholder="请选择" />
       </view>
     </picker>
     <picker bindchange="bindPickerChange" value="{{industryKey}}" range="{{industries}}" range-key="name" data-valType="industry">
       <view class="picker">
-        <i-input value="{{ industries[industryKey].name }}"  title="行业" placeholder="请选择行业" />
+        <i-input disabled value="{{ industries[industryKey].name }}"  title="行业" placeholder="请选择行业" />
       </view>
     </picker>
     <picker bindchange="bindPickerChange" value="{{frequencyKey}}" range="{{frequencies}}" range-key="name" data-valType="frequency">
       <view class="picker">
-        <i-input value="{{ frequencies[frequencyKey].name }}"  title="频率" placeholder="请选择频率"  />
+        <i-input disabled value="{{ frequencies[frequencyKey].name }}"  title="频率" placeholder="请选择频率"  />
       </view>
     </picker> 
     <i-input bind:change="bindKeyInput" data-key="remark" value="{{ remark }}" title="需求" placeholder="请输入需求" type="textarea" maxlength="100" />

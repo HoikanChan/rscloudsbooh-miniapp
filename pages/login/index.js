@@ -3,6 +3,7 @@ const { FORGET_PSW_URL } = require('../../config.js');
 const { createWebUrl } = require('../../utils/util');
 const { hex_md5 } = require('../../utils/md5');
 const request = require('../../utils/request.js');
+const app = getApp();
 
 Page({
   /**
@@ -18,7 +19,12 @@ Page({
   },
   foregePsw: function() {
     wx.navigateTo({
-      url: '/pages/foregetPsw/index'
+      url: '/pages/forgetPsw/index'
+    });
+  },
+  register: function() {
+    wx.navigateTo({
+      url: '/pages/register/index'
     });
   },
   formSubmit: function() {
@@ -43,6 +49,7 @@ Page({
               icon: 'none'
             });
           } else {
+            app.globalData.ticket = res.st;
             wx.navigateBack();
           }
         })

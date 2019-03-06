@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "忘记密码",
+  "usingComponents": {
+    "i-steps": "../../iview/steps/index",
+    "i-step": "../../iview/step/index",
+    "i-input": "../../iview/input/index",
+    "i-panel": "../../iview/panel/index",
+    "i-spin": "../../iview/spin/index",
+    "i-cell": "../../iview/panel/index"
+  }
 }

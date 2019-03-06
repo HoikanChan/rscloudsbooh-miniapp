@@ -1,2 +1,44 @@
-<!--pages/book/book.wxml-->
-<web-view src="{{url}}"></web-view>
+<!-- pages/book/book.wxml -->
+<view class="container">
+  <i-steps current="{{current}}" style="width:80%;margin-bottom:64rpx;">
+    <i-step status="process">
+      <view slot="title">输入验证码</view>
+    </i-step>
+    <i-step status="">
+      <view slot="title">设置新密码</view>
+    </i-step>
+    <i-step status="">
+      <view slot="title">设置成功</view>
+    </i-step>
+  </i-steps>
+  <view wx:if="{{current == 0}}" class="step1">
+    <view class="step-wrapper">
+      <view class="line">
+        <input bindinput="bindKeyInput" data-key="form.phone" value="{{ phone }}" placeholder="请输入手机号" type="textarea" />
+        <button class="small-btn" bindtap="getCode" disabled="{{codeText !== '验证码'}}">{{codeText}}</button>
+      </view>
+      <view class="line">
+        <input  bindinput="bindKeyInput" data-key="form.code" value="{{ code }}" placeholder="请输入验证码" type="textarea" />
+      </view>
+      <button class="nextStep-btn" bindtap="nextStep">下一步</button>
+    </view>
+  </view>
+  <view wx:if="{{current == 1}}" class="step1">
+    <view class="step-wrapper">
+      <view class="line">
+        <input password="true" bindinput="bindKeyInput" data-key="newPassword" value="{{ newPassword }}" placeholder="设置新密码" type="textarea" />
+      </view>
+      <view class="line">
+        <input password="true" bindinput="bindKeyInput" data-key="repeatPassword" value="{{ repeatPassword }}" placeholder="确认新密码" type="textarea" />
+      </view>
+      <button class="nextStep-btn" bindtap="nextStep2">下一步</button>
+    </view>
+  </view>
+  <view wx:if="{{current == 2}}" class="step1">
+    <view class="step-wrapper">
+      <text class="success-text">修改密码成功</text>
+      <button class="nextStep-btn" bindtap="gotoLogin">马上登录</button>
+    </view>
+  </view>
+  <i-spin wx:if="{{loading}}" fix></i-spin>
+</view>

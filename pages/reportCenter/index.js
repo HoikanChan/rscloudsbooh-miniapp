@@ -147,7 +147,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function() {
-    console.log(app.globalData);
     this.updateAreaList('', 0);
   },
   onShow: function() {
@@ -159,7 +158,6 @@ Page({
     });
     if (!keyword) {
       api.getReports().then(res => {
-        console.log(res.booksList);
         this.setData({ bookList: this.formatListData(res.booksList) });
         this.setData({
           loading: false

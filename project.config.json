@@ -9,11 +9,12 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"nodeModules": false,
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
-	"appid": "wx4e8d91fcb5bddc14",
+	"appid": "wx8fed14b762b41f33",
 	"projectname": "yunbao",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -37,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -72,7 +73,19 @@
 				{
 					"id": -1,
 					"name": "login",
-					"pathName": "pages/login/index"
+					"pathName": "pages/login/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "forget",
+					"pathName": "pages/forgetPsw/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "regis",
+					"pathName": "pages/register/index"
 				}
 			]
 		}

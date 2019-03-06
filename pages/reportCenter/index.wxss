@@ -66,6 +66,16 @@
       position: relative;
       padding: 2%;
     }
+  .bookItem .fee-icon {
+    font-size: 14px;
+    padding: 8rpx 16rpx;
+    position: absolute; 
+    top: 18rpx;
+    z-index: 100;
+    background: #e14052;
+    color: #fff;
+    right: 16rpx;
+  }
   .bookItem .cover{
     /* width:520rpx; */
     width: 100%;

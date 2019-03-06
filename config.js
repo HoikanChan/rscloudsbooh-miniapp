@@ -1,20 +1,21 @@
 const HOST = 'http://yunbao.rscloudmart.com/';
+// const HOST = 'http://192.168.15.226/rscloud-books-web/';
+const MART_HOST='http://www.rscloudmart.com/';
 const BOOK_HOST = HOST + 'books/booksDtail';
 const BOOK_DOWNLOAD_HOST = HOST + 'books/booksDownload';
-const IMG_URL = 'http://www.rscloudmart.com/image/';
+const IMG_URL = MART_HOST+'image/';
+const IMGCODE_URL = MART_HOST+'usercenter/registerImagesCode.htm';
 // 轮播图
 const CAROUSEL_URL = HOST + '/images/banner.png';
 const HELPCENTER_URL = HOST + 'help';
-// 忘记密码
-const FORGET_PSW_URL =
-  'http://www.rscloudmart.com/usercenter/forgetLoginPassword.htm';
 
 module.exports = {
   HOST: HOST,
+  MART_HOST: MART_HOST,
   IMG_URL: IMG_URL,
   CAROUSEL_URL: CAROUSEL_URL,
+  IMGCODE_URL : IMGCODE_URL ,
   BOOK_HOST: BOOK_HOST,
-  FORGET_PSW_URL: FORGET_PSW_URL,
   BOOK_DOWNLOAD_HOST: BOOK_DOWNLOAD_HOST,
   HELPCENTER_URL: HELPCENTER_URL
 };

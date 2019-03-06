@@ -1,16 +1,24 @@
 /* pages/book/book.wxss */
-.container > view {
-  width: 100%;
+.wrapper{
+  height: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10%;
 }
-.step-wrapper {
-  width: 80%;
+.title-img {
+  width: 10rem;
+  margin-bottom: 3rem;
+}
+.small-btn{
+  font-size: 14px;
 }
 .line {
   width: 100%;
   display: flex;
   padding: 24rpx 0;
+  align-items:center;
   border-bottom: 1px solid #ccc;
 }
 .line text {
@@ -22,10 +30,10 @@
   margin-left: 32rpx;
   flex: 1;
 }
-.small-btn {
-  font-size: 14px;
+.title{
+  font-size: 0.8em;
 }
-.nextStep-btn {
+.register-btn {
   margin-top: 96rpx;
   width: 100%;
   background: #e14052;
@@ -34,13 +42,4 @@
   line-height: 82rpx;
   height: 82rpx;
   padding: 4rpx 82rpx;
-}
-.success-text {
-  width: 100%;
-  text-align: center;
-  display: block;
-  font-family: Arial;
-  font-weight: bold;
-  color: #333;
-  margin-top: 42rpx;
 }

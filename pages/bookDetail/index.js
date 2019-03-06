@@ -28,7 +28,10 @@ Page({
   // 点击下载云报
   downloadBook: function() {
     wx.downloadFile({
-      url: `${BOOK_DOWNLOAD_HOST}?id=${this.data.bookid}&downloadFlag=1`
+      url: `${BOOK_DOWNLOAD_HOST}?id=${this.data.bookid}&downloadFlag=1`,
+      header: {
+        Cookie: 'JSESSIONID=' + wx.getStorageSync('JSESSIONID')
+      }
     });
   },
   // 点击查看云报

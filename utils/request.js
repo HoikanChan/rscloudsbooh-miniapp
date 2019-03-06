@@ -1,16 +1,44 @@
-const host = 'http://yunbao.rscloudmart.com/';
-const { HOST } = require('../config.js')
-
-function request(url, data = {}, method = "GET") {
-  return new Promise(function (resolve, reject) {
+const { HOST, MART_HOST } = require('../config.js');
+// 用Promise 封装wx.request
+// 参数url： 路径
+// 参数data： 查询数据
+// 参数method： 查询方法
+// 参数host： 主机地址 ，由于需要调用集市接口，为[mart]时切换为集市主机地址
+// P.s.由于部分接口后台需要查询 sessionId，微信小程序缺少cookie功能，手动加入sessionId
+function request(url, data = {}, method = 'GET', host = HOST) {
+  let sessionId = '';
+  //本地取存储的sessionID
+  sessionId =
+    host === 'mart'
+      ? wx.getStorageSync('MART_JSESSIONID')
+      : wx.getStorageSync('JSESSIONID');
+  return new Promise(function(resolve, reject) {
     wx.request({
-      url: HOST + url,
+      url: (host === 'mart' ? MART_HOST : host) + url,
       data: data,
       method: method.toString(),
       header: {
-        'Content-Type': 'application/json'
+        'Content-Type':
+          method === 'POST'
+            ? 'application/x-www-form-urlencoded'
+            : 'application/json',
+        Cookie: 'JSESSIONID=' + sessionId
       },
-      success: function (res) {
+      success: function(res) {
+        console.log(res);
+        let Cookie = '';
+        // 记录ssesionId
+        if (sessionId === '' || (sessionId === null && res.cookies)) {
+          host === 'mart'
+            ? wx.setStorageSync(
+                'MART_JSESSIONID',
+                /JSESSIONID=(.*?);/.exec(res.header['Set-Cookie'])[1]
+              )
+            : wx.setStorageSync(
+                'JSESSIONID',
+                /JSESSIONID=(.*?);/.exec(res.header['Set-Cookie'])[1]
+              );
+        }
         if (res.statusCode == 200) {
           if (res.data.errno == 501) {
             // 清除登录相关内容
@@ -31,11 +59,10 @@ function request(url, data = {}, method = "GET") {
           reject(res.data);
         }
       },
-      fail: function (err) {
-        debugger
+      fail: function(err) {
         resolve(err);
       }
-    })
+    });
   });
 }
 module.exports = request;

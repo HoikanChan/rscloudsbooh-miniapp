@@ -9,6 +9,7 @@
     "pages/my/index",
     "pages/login/index",
     "pages/forgetPsw/index",
+    "pages/register/index",
     "pages/customService/index"
   ],
   "window": {

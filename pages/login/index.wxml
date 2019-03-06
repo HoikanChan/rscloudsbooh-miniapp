@@ -13,11 +13,11 @@
     <view bindtap="foregePsw">忘记密码？</view>
   </view>
   <view class="btn-row">
-    <button style="margin:48px 0 0" bindtap="formSubmit" type="success">提交需求</button>
+    <button style="margin:48px 0 0" bindtap="formSubmit" type="success">登录</button>
   </view>
   <view class="register-row">
     <text>没有帐号？</text>
-    <navigator >立即注册</navigator>
+    <view bindtap="register">立即注册</view>
   </view>
   <i-spin wx:if="{{loading}}" fix></i-spin>
 </view>

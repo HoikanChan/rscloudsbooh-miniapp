@@ -1,0 +1,33 @@
+<!--pages/book/book.wxml-->
+
+<view class="wrapper">
+  <image class="title-img" mode="widthFix" src="../../static/imgs/login-title.png"></image>
+      <view class="line">
+        <text class="title">手机号:</text>
+        <input bindinput="bindKeyInput" data-key="form.userPhone" value="{{ userPhone }}" placeholder="请输入" type="textarea" />
+      </view>
+      <view class="line">
+        <text class="title">随机验证码:</text>
+        <input  bindinput="bindKeyInput" data-key="code" value="{{ code }}" placeholder="请输入" type="textarea" />
+        <image  style="width:156rpx;" mode="widthFix" src="{{imgCode}}" bindtap="changeCode"></image>
+      </view>
+      <view class="line">
+        <text class="title">手机验证码:</text>
+        <input  bindinput="bindKeyInput" data-key="form.scode" value="{{ scode }}" placeholder="请输入手机验证码" type="textarea" />
+        <button class="small-btn" bindtap="getCode" disabled="{{codeText !== '验证码'}}">{{codeText}}</button>
+      </view>
+      <view class="line">
+        <text class="title">用户名:</text>
+        <input  bindinput="bindKeyInput" data-key="form.userName" value="{{ userName }}" placeholder="设置新密码" type="textarea" />
+      </view>
+      <view class="line">
+        <text class="title">密　码:</text>
+        <input password="true" bindinput="bindKeyInput" data-key="form.userPassword" value="{{ userPassword }}" placeholder="确认新密码" type="textarea" />
+      </view>
+      <view class="line">
+        <text class="title">确认密码:</text>
+        <input password="true" bindinput="bindKeyInput" data-key="repeatPassword" value="{{ repeatPassword }}" placeholder="确认新密码" type="textarea" />
+      </view>
+      <button class="register-btn" bindtap="register">注册</button>
+  <i-spin wx:if="{{loading}}" fix></i-spin>
+</view>

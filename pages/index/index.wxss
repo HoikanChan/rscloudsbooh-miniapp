@@ -1,50 +1,59 @@
 /**index.wxss**/
-@import "../../static/css/searchInput.wxss";
+@import '../../static/css/searchInput.wxss';
 
-.wrapper{
+.wrapper {
   padding: 36rpx 12px;
 }
-.carousel-swpier{
-
-  height: 31vh;
+.carousel-swpier {
+  height: 38vh;
 }
-.carousel{
+.carousel {
   width: 100%;
 }
-.booklist{
+.booklist {
   margin-top: 32rpx;
   height: 520rpx;
 }
-.bookItem{
+.bookItem {
   display: inline-block;
   height: 640rpx;
   margin-right: 2rem;
-
+  position: relative;
 }
-  .bookItem .cover{
-    width:520rpx;
-    height: 360rpx;
-    box-shadow: 10px 10px 20px #dcdcdc;
-    border-radius: 10px;
-  }
-  .bookItem .download-icon{
-    width:80rpx;
-    height: 80rpx;
-  }
-  .bookItem .title{
-    display: block;
-    color: #333;
-    width: 520rpx;
-    margin: 12px 0 8px;
-    font-size: 16px;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space: nowrap;
-    margin-left: 12rpx;
-  }
-  .bookItem .time{
-    margin-left: 12rpx;
-    color: #b1b1b1;
-    display: block;
-    font-size: 14px;
-  }
+.bookItem .fee-icon {
+  font-size: 14px;
+  padding: 8rpx 16rpx;
+  position: absolute; 
+  top: 18rpx;
+  z-index: 100;
+  background: #e14052;
+  color: #fff;
+  right: 16rpx;
+}
+.bookItem .cover {
+  width: 520rpx;
+  height: 360rpx;
+  box-shadow: 10px 10px 20px #dcdcdc;
+  border-radius: 10px;
+}
+.bookItem .download-icon {
+  width: 80rpx;
+  height: 80rpx;
+}
+.bookItem .title {
+  display: block;
+  color: #333;
+  width: 520rpx;
+  margin: 12px 0 8px;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 12rpx;
+}
+.bookItem .time {
+  margin-left: 12rpx;
+  color: #b1b1b1;
+  display: block;
+  font-size: 14px;
+}

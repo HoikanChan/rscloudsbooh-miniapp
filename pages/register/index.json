@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "注册",
+  "usingComponents": {
+    "i-input": "../../iview/input/index",
+    "i-panel": "../../iview/panel/index",
+    "i-radio-group": "../../iview/radio-group/index",
+    "i-radio": "../../iview/radio/index",
+    "i-button": "../../iview/button/index",
+    "i-spin": "../../iview/spin/index"
+  }
+}
