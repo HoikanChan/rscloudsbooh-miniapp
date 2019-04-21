@@ -1,0 +1,25 @@
+/* pages/authorization/index.wxss */
+.title-img {
+  width: 10rem;
+  margin-bottom: 3rem;
+}
+text{
+  font-size:0.8em;
+  padding:0 10%;
+  color:#777;
+  text-align:center;
+}
+.btn-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+button {
+  width: 80%;
+  background: #e14052;
+  border: none;
+  color: #fff;
+  line-height: 82rpx;
+  height: 82rpx;
+  padding: 4rpx 82rpx;
+}

@@ -54,7 +54,7 @@
       </swiper>
   </view>
    <view>
-       <i-progress title="最新云报" total="{{areaTotal}}" now="{{areaCurrent}}"></i-progress>
+       <i-progress title="区域云报" total="{{areaTotal}}" now="{{areaCurrent}}"></i-progress>
       <swiper 
         current="{{areaCurrent}}" 
         class='booklist' 
@@ -65,11 +65,9 @@
         bindchange="swiperChange"
       > 
         <swiper-item  wx:for="{{areaBooksList}}" wx:key="{{index}}" > 
-          <view class='bookItem' bindtap='viewBook' data-bookid="{{item.id}}" data-img="{{item.img_url}}" data-title="{{item.title}}" data-time="{{item.time}}">
+          <view class='bookItem' bindtap='viewArea' data-bookid="{{item.id}}" data-img="{{item.img_url}}" data-title="{{item.title}}" data-areaCode="{{item.areaCode}}">
             <image class="cover" src="{{item.img_url}}" mode="aspectFit" background-size="cover"></image>
-            <text class='title'>{{item.title}}</text>
-            <text class='time'>{{item.time}}</text>
-           
+            <text class='title'>{{item.title}}</text>          
           </view>
         </swiper-item>
       </swiper>

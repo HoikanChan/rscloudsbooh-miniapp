@@ -10,6 +10,7 @@
     align-items: center;
   }
  .cover{
+   margin-top: 36rpx;
   height: 460rpx;
   box-shadow: 10px 10px 20px #dcdcdc;
   border-radius: 10px;

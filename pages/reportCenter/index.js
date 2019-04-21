@@ -1,7 +1,12 @@
 // pages/reportCenter/index.js
 const api = require('../../utils/api.js');
-const { IMG_URL } = require('../../config.js');
-const { formatTime, debounce } = require('../../utils/util.js');
+const {
+  IMG_URL
+} = require('../../config.js');
+const {
+  formatTime,
+  debounce
+} = require('../../utils/util.js');
 const app = getApp();
 Page({
   /**
@@ -14,7 +19,10 @@ Page({
     areaArray: [],
     keyword: '',
     industryKey: '',
-    industries: [
+    industries: [{
+        val: '',
+        name: '全部'
+      },
       {
         val: 'tdly',
         name: '土地利用'
@@ -46,14 +54,13 @@ Page({
       {
         val: 'were',
         name: '植被分布'
-      },
-      {
-        val: '',
-        name: '全部'
       }
     ],
     infoHzCodeKey: '',
-    infoHzCodes: [
+    infoHzCodes: [{
+        val: '',
+        name: '全部'
+      },
       {
         val: 6,
         name: '年报'
@@ -81,14 +88,13 @@ Page({
       {
         val: 5,
         name: '周报'
-      },
-      {
-        val: '',
-        name: '全部'
       }
     ],
     downloadStandardKey: '',
-    downloadStandards: [
+    downloadStandards: [{
+        val: '',
+        name: '全部'
+      },
       {
         val: 0,
         name: '免费下载'
@@ -100,10 +106,6 @@ Page({
       {
         val: 2,
         name: '付费阅读'
-      },
-      {
-        val: '',
-        name: '全部'
       }
     ]
   },
@@ -133,6 +135,11 @@ Page({
     });
     this.updateBookList();
   },
+  goToCustomize: function(e) {
+    wx.switchTab({
+      url: '/pages/customizeReport/customizeReport'
+    });
+  },
   // 处理api数据
   formatListData: function(list) {
     return list.map(item => {
@@ -148,24 +155,72 @@ Page({
    */
   onLoad: function() {
     this.updateAreaList('', 0);
-  },
-  onShow: function() {
-    const { keyword } = app.globalData;
-    app.globalData.keyword = '';
     this.setData({
-      keyword,
       loading: true
     });
-    if (!keyword) {
-      api.getReports().then(res => {
-        this.setData({ bookList: this.formatListData(res.booksList) });
-        this.setData({
-          loading: false
-        });
+    api.getReports().then(res => {
+      this.setData({
+        bookList: this.formatListData(res.booksList)
       });
-    } else {
+      this.setData({
+        loading: false
+      });
+    });
+  },
+  onShow: function() {
+    const {
+      keyword,
+      areaCode
+    } = app.globalData;
+    app.globalData.keyword = '';
+
+    if (keyword) {
+      this.reset();
+      this.setData({
+        keyword: keyword || '',
+      });
       this.updateBookList();
+      return;
     }
+    if (areaCode) {
+      if (this.data.areaArray[0]) {
+        this.queryByArea()
+      }else{
+        setTimeout(this.queryByArea,500)
+      }
+    }
+  },
+  queryByArea: function(){
+    const {
+      areaCode
+    } = app.globalData;
+    if (this.data.areaArray[0]) {
+      let index;
+      this.data.areaArray[0].find((item, i) => {
+        if (item.adminId === areaCode) {
+          index = i
+          return true
+        } else {
+          return false
+        }
+      })
+      this.setData({
+        'areaIndex[0]': index
+      })
+      app.globalData.areaCode = '';
+      this.updateBookList();
+      return;
+    }else{
+      setTimeout(this.queryByArea, 500)
+    }
+  },
+  reset: function() {
+    this.setData({
+      areaIndex: ['', '', ''],
+      industryKey: '',
+      downloadStandardKey: '',
+      infoHzCodeKey: ''
+    })
   },
   inputChange: debounce(function(e) {
     const keyword = e.detail.value;
@@ -190,21 +245,20 @@ Page({
       keyword
     } = this.data;
     const area =
-      areaIndex[1] && areaArray[1][areaIndex[1]].adminId
-        ? areaArray[1][areaIndex[1]].adminId
-        : areaIndex[0]
-        ? areaArray[0][areaIndex[0]].adminId
-        : '';
-    let industry = industries[industryKey]
-      ? industries[industryKey].val
-      : 'report';
+      areaIndex[1] && areaArray[1][areaIndex[1]].adminId ?
+      areaArray[1][areaIndex[1]].adminId :
+      areaIndex[0] ?
+      areaArray[0][areaIndex[0]].adminId :
+      '';
+    let industry = industries[industryKey] ?
+      industries[industryKey].val :
+      'report';
     api
       .queryReports(industry, {
         keyword,
         area,
         infoHzCode: infoHzCodeKey && infoHzCodes[infoHzCodeKey].val,
-        downloadStandard:
-          downloadStandardKey && downloadStandards[downloadStandardKey].val
+        downloadStandard: downloadStandardKey && downloadStandards[downloadStandardKey].val
       })
       .then(res => {
         this.setData({
@@ -214,7 +268,9 @@ Page({
       });
   },
   // 点击查看云报
-  viewBook: function({ currentTarget }) {
+  viewBook: function({
+    currentTarget
+  }) {
     // bookid,img,time,title
     let url = '/pages/bookDetail/index?';
     const data = currentTarget.dataset;
@@ -244,9 +300,9 @@ Page({
             [key]: res.list
           });
           this.updateAreaList(
-            res.list[colIndex]
-              ? res.list[colIndex].adminId
-              : res.list[0].adminId,
+            res.list[colIndex] ?
+            res.list[colIndex].adminId :
+            res.list[0].adminId,
             ++index
           );
         } else {

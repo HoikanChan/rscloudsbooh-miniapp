@@ -48,7 +48,7 @@ Page({
           loading: false
         });
         if (res.code === '1') {
-          this.countDown(5, () => {
+          this.countDown(60, () => {
             this.setData({
               codeText: '验证码'
             });
@@ -116,6 +116,9 @@ Page({
           title: '成功',
           content: res.message,
         })
+        setTimeout(function(){
+          wx.navigateBack();
+        },1000)
       } else {
         wx.showToast({
           title: res.message,

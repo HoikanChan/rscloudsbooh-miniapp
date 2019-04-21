@@ -1,0 +1,8 @@
+<!--pages/authorization/index.wxml-->
+<view class='container'>
+  <image class="title-img" mode="widthFix" src="../../static/imgs/login-title.png"></image>
+  <text>登录小程序需要获取您的用户信息，请点击下面的授权按钮进行授权后再登录。</text>
+   <view class="btn-row">
+    <button style="margin:48px 0 0" open-type="getUserInfo" bindgetuserinfo="gotUserInfo" type="success">前往授权</button>
+  </view>
+</view>

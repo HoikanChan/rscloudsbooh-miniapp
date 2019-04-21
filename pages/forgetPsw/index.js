@@ -21,7 +21,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function() {},
+  onLoad: function() {
+    wx.removeStorageSync('MART_JSESSIONID');
+  },
   getCode: function() {
     const { phone } = this.data.form;
     if (!(phone && mobileReg.test(phone))) {
@@ -39,7 +41,7 @@ Page({
         loading: false
       });
       if (res.code === '1') {
-        this.countDown(5, () => {
+        this.countDown(60, () => {
           this.setData({
             codeText: '验证码'
           });

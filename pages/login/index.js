@@ -34,6 +34,10 @@ Page({
       this.setData({
         loading: true
       });
+      wx.setStorageSync(
+        'JSESSIONID',
+        ''
+      )
       request('booksUserLogin', {
         contact: this.data.form.contact,
         password: hex_md5(this.data.form.password),
@@ -54,6 +58,9 @@ Page({
           }
         })
         .catch(res => {
+          this.setData({
+            loading: false
+          });
           wx.showToast({
             title: res.msg,
             icon: 'none'

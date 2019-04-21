@@ -15,6 +15,9 @@
   <view class='menu'>
     <i-panel class="cell-panel-demo">
         <i-cell-group>
+            <i-cell title="已购云报" is-link url="/pages/myBooks/index">
+              <image class="icon" slot="icon" mode="widthFix" src="../../static/imgs/my-help.png" />
+            </i-cell>
             <i-cell title="帮助中心" is-link bind:click="navigateToWeb">
               <image class="icon" slot="icon" mode="widthFix" src="../../static/imgs/my-help.png" />
             </i-cell>

@@ -54,7 +54,7 @@
   <view class="no-result" wx:if="{{!bookList.length}}">
     <image src="../../static/imgs/no-search-result.png" mode="aspectFit" background-size="cover"></image>
     <text class="area-text">暂时没有满足您需求的报告，您可以</text>
-    <button>定制报告</button>
+    <button bindtap='goToCustomize'>定制报告</button>
   </view>
   <view class="bookList">
     <view wx:for="{{bookList}}" wx:key="{{index}}" class='bookItem' bindtap='viewBook' data-bookid="{{item.id}}" data-img="{{item.img_url}}" data-title="{{item.title}}" data-time="{{item.time}}">

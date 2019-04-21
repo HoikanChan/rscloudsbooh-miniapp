@@ -10,17 +10,19 @@
     "pages/login/index",
     "pages/forgetPsw/index",
     "pages/register/index",
-    "pages/customService/index"
+    "pages/customService/index",
+    "pages/authorization/index",
+    "pages/myBooks/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "遥感云报",
+    "navigationBarTitleText": "云报",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "backgroundColor": "#fafafa",
-    "borderStyle": "#999",
+    "borderStyle": "black",
     "selectedColor": "#e14052",
     "color": "#666",
     "list": [

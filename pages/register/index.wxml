@@ -18,11 +18,11 @@
       </view>
       <view class="line">
         <text class="title">用户名:</text>
-        <input  bindinput="bindKeyInput" data-key="form.userName" value="{{ userName }}" placeholder="设置新密码" type="textarea" />
+        <input  bindinput="bindKeyInput" data-key="form.userName" value="{{ userName }}" placeholder="输入用户名" type="textarea" />
       </view>
       <view class="line">
         <text class="title">密　码:</text>
-        <input password="true" bindinput="bindKeyInput" data-key="form.userPassword" value="{{ userPassword }}" placeholder="确认新密码" type="textarea" />
+        <input password="true" bindinput="bindKeyInput" data-key="form.userPassword" value="{{ userPassword }}" placeholder="设置密码，需大于6位" type="textarea" />
       </view>
       <view class="line">
         <text class="title">确认密码:</text>

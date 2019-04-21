@@ -1,12 +1,17 @@
 <!-- pages/bookDetail/index.wxml -->
 <view class='container'>
   <view class="book-info">
-    <image class="cover" src="{{img}}" mode="aspectFit" background-size="cover"></image>
     <text class='title'>{{title}}</text>
     <text class='time'>{{time}}</text>
+    <image class="cover" src="{{img}}" mode="aspectFit" background-size="cover"></image>
+    <text wx:if="{{isPurchased}}" style='margin-top:1em;color:#777;'>已购买</text>
+    <text wx:else style='margin-top:1em;color:#ea6e5a;'>￥ 10.00元</text>
+
   </view>
   <view class='btn-row'>
     <button class="btn-left" bindtap="viewBook">开始阅读</button>
-    <button class="btn-right" bindtap="downloadBook">下载</button>
+    <!-- <button class="btn-right" bindtap="pay">支付</button> -->
   </view>
+  <i-spin wx:if="{{loading}}" fix></i-spin>
+
 </view>

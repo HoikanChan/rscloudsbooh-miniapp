@@ -22,11 +22,10 @@ function request(url, data = {}, method = 'GET', host = HOST) {
           method === 'POST'
             ? 'application/x-www-form-urlencoded'
             : 'application/json',
-        Cookie: 'JSESSIONID=' + sessionId
+            //提交定制报告时 必须加ticket在cookie钟才能通过登录验证
+        Cookie: `JSESSIONID=${sessionId};CASTGC=${getApp()?getApp().globalData.ticket || '':''}`
       },
       success: function(res) {
-        console.log(res);
-        let Cookie = '';
         // 记录ssesionId
         if (sessionId === '' || (sessionId === null && res.cookies)) {
           host === 'mart'
@@ -38,6 +37,12 @@ function request(url, data = {}, method = 'GET', host = HOST) {
                 'JSESSIONID',
                 /JSESSIONID=(.*?);/.exec(res.header['Set-Cookie'])[1]
               );
+        }
+        if (res.statusCode === 500){
+          reject()
+          wx.showToast({
+            title: '服务端发生异常，请重试',
+          })
         }
         if (res.statusCode == 200) {
           if (res.data.errno == 501) {

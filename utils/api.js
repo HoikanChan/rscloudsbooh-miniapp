@@ -2,6 +2,7 @@ const request = require('./request.js');
 
 module.exports = {
   // 查询获取区域，省市乡，为树状结构，
+  getIndexContent: () => request('getIndexContent'),
   getAreaList: fatherId =>
     fatherId
       ? request('area/getAreaList?fatherId=' + fatherId)
@@ -53,5 +54,11 @@ module.exports = {
       { ...form, userEmail: '', userCompany: '', userAddress: '', rephone: '' },
       'GET',
       'mart'
-    )
+    ),
+  // 支付
+  getPayParams: (openid, goodId) => request('/weChat/getPayParameters.do',{
+    openid, goodId
+  }),
+  getPurchasedBooks: (openid) => request('/weChat/getUserOrder.do', { openid}),
+  getUserOpenid: (code) => request('/weChat/getUserOpenid.do',{code})
 };

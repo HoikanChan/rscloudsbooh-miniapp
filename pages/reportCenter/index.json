@@ -1,5 +1,7 @@
 {
+  "navigationBarTitleText": "报告中心",
   "usingComponents": {
-    "i-spin": "../../iview/spin/index"
+    "i-spin": "../../iview/spin/index",
+    "i-icon": "../../iview/icon/index"
   }
 }

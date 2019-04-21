@@ -1,0 +1,19 @@
+<!--pages/myBooks/index.wxml-->
+<view class='wrapper'>
+<view class="no-result" wx:if="{{!mybookList.length}}">
+  <image src="../../static/imgs/no-search-result.png" mode="aspectFit" background-size="cover"></image>
+  <text class="area-text">您目前没有购买报告</text>
+  <!-- <button bindtap='goToCustomize'>选购云报</button> -->
+</view>
+<view class="bookList">
+  <view wx:for="{{mybookList}}" wx:key="{{index}}" class='bookItem' bindtap='viewBook' data-bookid="{{item.id}}" data-img="{{item.img_url}}" data-title="{{item.title}}" data-time="{{item.time}}">
+    <image class="cover" src="{{item.img_url}}" mode="aspectFit" background-size="cover"></image>
+    <text class='title'>{{item.title}}</text>
+    <text class='time'>{{item.time}}</text>
+    <text class="fee-icon" wx:if="{{item.readIsFree}}">免费</text>
+    <text class="fee-icon" wx:if="{{item.downloadIsFree}}">付费</text>
+  </view>
+</view>
+  <i-spin wx:if="{{loading}}" fix></i-spin>
+
+</view>

@@ -1,22 +1,25 @@
 const request = require('../../utils/request.js');
-const { mobileReg } = require('../../utils/util.js');
-const { getAreaList } = require('../../utils/api.js');
+const {
+  mobileReg
+} = require('../../utils/util.js');
+const {
+  getAreaList
+} = require('../../utils/api.js');
 import WxValidate from '../../utils/wxValidate.js';
 Page({
   data: {
     loading: false,
-    form: {
-      company: '',
-      name: '',
-      userPhone: '',
-      remark: ''
-    },
+
+    company: '',
+    name: '',
+    userPhone: '',
+    remark: '',
+
     areaIndex: [null, null, null],
     areaArray: [],
     region: ['', '', ''],
     industryKey: null,
-    industries: [
-      {
+    industries: [{
         val: '8ac169e6-4a3e-4291-af1c-e913ed89b6a5',
         name: '林业'
       },
@@ -46,8 +49,7 @@ Page({
       }
     ],
     frequencyKey: null,
-    frequencies: [
-      {
+    frequencies: [{
         val: 6,
         name: '年报'
       },
@@ -101,8 +103,7 @@ Page({
         loading: true
       });
       request(
-        'custom/addBooksCustomization',
-        {
+        'custom/addBooksCustomization', {
           company: this.data.company,
           name: this.data.name,
           userPhone: this.data.userPhone,
@@ -121,7 +122,17 @@ Page({
             title: '成功',
             content: res.msg,
           })
-        }else{
+          this.setData({
+            areaIndex: [null, null, null],
+            frequencyKey: null,
+            industryKey: null,
+
+            'company': '',
+            'name': '',
+            'userPhone': '',
+            'remark': ''
+          })
+        } else {
           wx.navigateTo({
             url: '/pages/login/index'
           });
@@ -130,10 +141,18 @@ Page({
     }
   },
   validateForm: function() {
-    const { company, name, userPhone, remark } = this.data;
+    const {
+      company,
+      name,
+      userPhone,
+      remark
+    } = this.data;
     let errMsg = '';
-    if (!userPhone || !mobileReg.test(userPhone)) {
+    if (!userPhone) {
       errMsg = '请输入手机';
+    }
+    if (!mobileReg.test(userPhone)) {
+      errMsg = '请输入正确手机号码';
     }
     if (!name) {
       errMsg = '请输入姓名';
@@ -150,8 +169,7 @@ Page({
     if (!this.data.industries[this.data.industryKey]) {
       errMsg = '请选择行业';
     }
-    if (
-      !this.data.areaArray[2] ||
+    if (!this.data.areaArray[2] ||
       !this.data.areaArray[2][this.data.areaIndex[2]]
     ) {
       errMsg = '请选择区域';
@@ -168,7 +186,10 @@ Page({
   },
   // 区域行改变绑定
   bindAreaColumnChange: function(e) {
-    const { column, value } = e.detail;
+    const {
+      column,
+      value
+    } = e.detail;
     var data = {
       areaArray: this.data.areaArray,
       areaIndex: this.data.areaIndex
@@ -182,7 +203,6 @@ Page({
   },
   // 区域值改变绑定
   bindAreaChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value);
     this.setData({
       areaIndex: e.detail.value
     });
@@ -191,10 +211,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      loading: true
+    })
     this.updateAreaList('', 0);
   },
   // 获取区域省市县，获取上级id递归构造二维数组
   updateAreaList: function(fatherId, index) {
+
     let colIndex = this.data.areaIndex[index];
     colIndex === null && (colIndex = 0);
     if (index < 3) {
@@ -205,9 +229,9 @@ Page({
             [key]: res.list
           });
           this.updateAreaList(
-            res.list[colIndex]
-              ? res.list[colIndex].adminId
-              : res.list[0].adminId,
+            res.list[colIndex] ?
+            res.list[colIndex].adminId :
+            res.list[0].adminId,
             ++index
           );
         } else {
@@ -215,6 +239,9 @@ Page({
         }
       });
     } else {
+      this.setData({
+        loading: false
+      })
       return;
     }
   }

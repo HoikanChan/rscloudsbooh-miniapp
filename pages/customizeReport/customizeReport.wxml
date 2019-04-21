@@ -17,20 +17,20 @@
     </picker>
     <picker bindchange="bindPickerChange" value="{{industryKey}}" range="{{industries}}" range-key="name" data-valType="industry">
       <view class="picker">
-        <i-input disabled value="{{ industries[industryKey].name }}"  title="行业" placeholder="请选择行业" />
+        <i-input disabled value="{{ industries[industryKey].name }}"  title="行业:" placeholder="请选择行业" />
       </view>
     </picker>
     <picker bindchange="bindPickerChange" value="{{frequencyKey}}" range="{{frequencies}}" range-key="name" data-valType="frequency">
       <view class="picker">
-        <i-input disabled value="{{ frequencies[frequencyKey].name }}"  title="频率" placeholder="请选择频率"  />
+        <i-input disabled value="{{ frequencies[frequencyKey].name }}"  title="频率:" placeholder="请选择频率"  />
       </view>
     </picker> 
-    <i-input bind:change="bindKeyInput" data-key="remark" value="{{ remark }}" title="需求" placeholder="请输入需求" type="textarea" maxlength="100" />
+    <i-input bind:change="bindKeyInput" data-key="remark" value="{{ remark }}" title="需求说明:" placeholder="请输入需求" type="textarea" maxlength="100" />
   </i-panel>
   <i-panel title="联系方式">
-      <i-input bind:change="bindKeyInput" data-key="company" value="{{ company }}" title="单位" placeholder="请输入单位" type="textarea" />
-      <i-input bind:change="bindKeyInput" data-key="name"  value="{{ name }}"  title="姓名" placeholder="请输入名字" type="textarea"/>
-      <i-input bind:change="bindKeyInput" data-key="userPhone" name="userPhone" value="{{ userPhone }}"title="手机" placeholder="请输入手机号"  type="textarea"/>
+      <i-input bind:change="bindKeyInput" data-key="company" value="{{ company }}" title="单位:" placeholder="请输入单位" type="textarea" />
+      <i-input bind:change="bindKeyInput" data-key="name"  value="{{ name }}"  title="姓名:" placeholder="请输入名字" type="textarea"/>
+      <i-input bind:change="bindKeyInput" data-key="userPhone" name="userPhone" value="{{ userPhone }}"title="手机:" placeholder="请输入手机号"  type="textarea"/>
   </i-panel>
   <view class="btn-row">
     <button  style="margin:48px 0" bindtap="formSubmit" type="success">提交需求</button>

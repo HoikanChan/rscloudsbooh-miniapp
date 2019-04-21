@@ -33,9 +33,18 @@ Page({
       });
     }
   },
+  // 点击查看区域云报
+  viewArea: function ({ currentTarget }) {
+    // bookid,img,time,title
+    let url = '/pages/bookDetail/index?';
+    const { areacode } = currentTarget.dataset;
+    app.globalData.areaCode = areacode
+    wx.switchTab({
+      url: '/pages/reportCenter/index'
+    });
+  },
   // 点击下载云报
   downloadBook: function({ currentTarget }) {
-    console.log(currentTarget.dataset.bookid);
     const id = currentTarget.dataset.bookid;
     if (id) {
       wx.navigateTo({
@@ -47,7 +56,6 @@ Page({
   // 滑动云报
   swiperChange: function(e) {
     const key = e.currentTarget.dataset.key;
-    console.log(e);
     this.setData({
       [key + 'Current']: e.detail.current
     });
@@ -67,7 +75,6 @@ Page({
       loading: true
     });
     request('getIndexContent').then(res => {
-      console.log(res);
       this.setData({
         loading: false,
         hotBooksList: this.formatListData(res.hotBooksList),
